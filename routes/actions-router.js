@@ -12,6 +12,7 @@
 const express = require('express')
 const Actions = require('../data/helpers/actionModel');
 const Projects = require('../data/helpers/projectModel');
+const { validateActionBody } = require('../middleware')
 const router = express.Router();
 
 router.get('/', (req,res) => {
@@ -44,7 +45,7 @@ router.get('/:id/projects', (req,res) => {
     })
 })
 
-router.post('/', (req, res) => {
+router.post('/', validateActionBody(), (req, res) => {
     Actions.insert(req.body)
     .then(response => {
         res.status(201).json({data: response})
@@ -54,7 +55,7 @@ router.post('/', (req, res) => {
     })
 })
 
-router.put('/:id', (req, res) => {
+router.put('/:id', validateActionBody(), (req, res) => {
     Actions.update(req.body, req.params.id)
     .then(response => {
         res.status(201).json({data: response})
