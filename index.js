@@ -27,6 +27,6 @@ server.use((err, req, res, next) => {
     res.status(500).json({errorMessage: 'something went wrong', err})
 })
 
-server.listen(port, () => {
+server.listen(PORT, () => {
     console.log(`Server Running on http://localhost:${PORT}`);
 })
