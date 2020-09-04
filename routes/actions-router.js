@@ -56,9 +56,9 @@ router.post('/', validateActionBody(), (req, res) => {
 })
 
 router.put('/:id', validateActionBody(), (req, res) => {
-    Actions.update(req.body, req.params.id)
+    Actions.update(req.params.id, req.body)
     .then(response => {
-        res.status(201).json({data: response})
+        res.status(201).json(response)
     })
     .catch(err => {
         res.status(500).json({message: 'couldnt change it, nope, not happening', err})
