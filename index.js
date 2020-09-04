@@ -16,7 +16,7 @@ const express = require('express');
 const server = express();
 const actionsRouter = require('./routes/actions-router');
 const projectsRouter = require('./routes/projects-router')
-const port = process.env.PORT || 5679;
+const PORT = process.env.PORT || 5679;
 
 server.use(express.json());
 server.use('/actions', actionsRouter);
@@ -27,5 +27,5 @@ server.use((err, req, res, next) => {
 })
 
 server.listen(port, () => {
-    console.log(`Server Running on http://localhost:${port}`);
+    console.log(`Server Running on http://localhost:${PORT}`);
 })
