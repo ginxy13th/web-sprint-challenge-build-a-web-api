@@ -16,7 +16,7 @@ const express = require('express');
 const server = express();
 const actionsRouter = require('./routes/actions-router');
 const projectsRouter = require('./routes/projects-router')
-const port = 5679;
+const port = process.env.PORT || 5679;
 
 server.use(express.json());
 server.use('/actions', actionsRouter);
